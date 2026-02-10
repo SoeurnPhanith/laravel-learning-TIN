@@ -1,0 +1,1 @@
+component use when having another UI always use to much in another page
