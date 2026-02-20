@@ -43,4 +43,8 @@ class TeacherController extends Controller
 
         return view('teacher.index', compact('teacher'));
     }
+
+    public function update(){
+        return "";
+    }
 }
