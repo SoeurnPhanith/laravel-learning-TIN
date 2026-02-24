@@ -14,6 +14,7 @@ class Teacher extends Model
         "name", 
         "gender",
         "skill", 
-        "salary" 
+        "salary" ,
+        "image"
     ];
 }

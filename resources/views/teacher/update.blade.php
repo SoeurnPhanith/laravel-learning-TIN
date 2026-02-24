@@ -365,7 +365,7 @@
     <div class="divider"></div>
 
     <!-- Take Method for thorow data from controller to form -->
-      <form action="{{route('teacher.update', $teacher->id)}}" method="POST" autocomplete="on">
+      <form action="{{route('teacher.update', $teacher->id)}}" method="POST" autocomplete="on" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <!-- Name -->
@@ -453,6 +453,16 @@
           @error('salary')
             <p style="color:red">{{ $message }}</p>
           @enderror
+        </div>
+         <div class="row mt-3">
+                <div class="col-12">
+                    <label for="" class="mb-3">Image</label>
+                    <input type="file" name="image" id="" class="form-control" >
+                    <img src="{{ asset('storage/'.$teacher->image) }}" alt="" width="50px">
+                    @error('image')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
         </div>
 
         <!-- Submit -->

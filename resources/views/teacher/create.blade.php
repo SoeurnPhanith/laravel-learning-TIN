@@ -365,7 +365,8 @@
     <div class="divider"></div>
 
     <!-- Pure HTML form (change action to your endpoint later if you want) -->
-      <form action="{{route('teacher.store')}}" method="POST" autocomplete="on">
+    <!--When using crud image must be having enctype dermby catch image from uploads-->
+      <form action="{{route('teacher.store')}}" method="POST" autocomplete="on" enctype="multipart/form-data">
         @csrf
 
         <!-- Name -->
@@ -453,6 +454,15 @@
           @error('salary')
             <p style="color:red">{{ $message }}</p>
           @enderror
+        </div>
+        <div class="row mt-3">
+                <div class="col-12">
+                    <label for="" class="mb-3">Image</label>
+                    <input type="file" name="image" id="" class="form-control">
+                    @error('image')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
         </div>
 
         <!-- Submit -->

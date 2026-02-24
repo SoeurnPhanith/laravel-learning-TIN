@@ -23,8 +23,12 @@ class TeacherController extends Controller
             "name" => "required",
             "gender" => "required",
             "skill" => "required",
-            "salary" => "required"
+            "salary" => "required",
+            "image" => "required|mimes:jpg,png,jpeng"
         ]);
+
+        //catch image from form user upload to store in images folder in public folder
+        $teacherImage = $request->file('image')->store('images','public');
 
         //catch data from form insert to db using method create
         Teacher::create([
@@ -32,7 +36,8 @@ class TeacherController extends Controller
             "name" => $request->name,
             "gender" => $request->gender,
             "skill" => $request->skill,
-            "salary" => $request->salary
+            "salary" => $request->salary,
+            "image"=>$teacherImage
         ]);
 
         //after insert to db redirect to index page
@@ -65,7 +70,8 @@ class TeacherController extends Controller
             "name" => "required",
             "gender" => "required",
             "skill" => "required",
-            "salary" => "required"
+            "salary" => "required", 
+            "image" => "required|mimes:jpg,png,jpeng"
         ]);
 
         //findById
@@ -76,6 +82,10 @@ class TeacherController extends Controller
         $findTeacherById->gender = $request->gender;
         $findTeacherById->skill = $request->skill;
         $findTeacherById->salary = $request->salary;
+        if($request->hasFile('image')){
+             $imageName = $request->file('image')->store('images','public');
+             $findTeacherById->image = $imageName;
+        }
 
         //after update save it into db// save to database
         $findTeacherById->save();

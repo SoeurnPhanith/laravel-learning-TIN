@@ -158,6 +158,7 @@
                 <th>Gender</th>
                 <th>Skill</th>
                 <th>Salary</th>
+                <th>Image</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -176,7 +177,7 @@
 
                 <td>{{$t -> skill}}</td>
                 <td>{{$t -> salary}}</td>
-
+                <td> <img src="{{ asset('storage/'.$t->image) }}" alt="" width="50px"></td>
                 <td>
                     <div class="actions">
                         <a class="action-btn edit" href="{{route('teacher.edit', $t->id)}}">Edit</a>
